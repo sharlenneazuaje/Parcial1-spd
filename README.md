@@ -1,5 +1,4 @@
-## Alumna
-- Sharlenne Azuaje
+## Alumna: Sharlenne Azuaje
 
 
 ## Proyecto: Montacarga Funcional.
