@@ -13,28 +13,28 @@ segmentos.
 
 
 ## Lista de Componentes
-![Tinkercad](./Img/ListadeComponentesMontacarga.png)
+![Tinkercad](./Img/Lista de ComponentesMontacarga.png)
 
 
 ## Diagrama Esquemático del Circuito
-![Tinkercad](./Img/DiagramaEsquemáticoMontacarga.png)
+![Tinkercad](./Img/Diagrama Esquemático Montacarga.png)
 
 
 ## Funciones 
 
-- DISPLAY
+- DISPLAY: 
 LED_A, LED_B, LED_C, LED_D, LED_E, LED_F, LED_F son #define que utilizamos para agregar los pines del display.
 
-- BOTONES
+- BOTONES: 
 BOTON_SUBIR, BOTON_BAJAR, BOTON_PAUSAR son #define que utilizamos para agregar los pines de los botones.
 
-- LEDS
+- LEDS: 
 LED_ROJO, LED_VERDE son #define que utilizamos para agregar los pines de los leds. 
 
-- ESTADOS
+- ESTADOS: 
 DETENIDO, SUBIENDO, BAJANDO son #define que utilizamos para establecer los estados del sistema. 
 
-- VARIABLES GLOBALES
+- VARIABLES GLOBALES: 
 int piso_actual; -> variable que guarda el piso actual en el que se encuentra el montacarga
 int lectura_subir; -> variable que lee el botón subir
 int lectura_bajar; -> variable que lee el botón bajar
