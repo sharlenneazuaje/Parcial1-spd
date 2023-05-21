@@ -13,28 +13,28 @@ segmentos.
 
 
 ## Lista de Componentes
-![Tinkercad](./Img/Lista de Componentes Montacarga.png)
+![Tinkercad](./Img/ListadeComponentesMontacarga.png)
 
 
 ## Diagrama Esquemático del Circuito
-![Tinkercad](./Img/Diagrama Esquemático Montacarga.png)
+![Tinkercad](./Img/DiagramaEsquemáticoMontacarga.png)
 
 
 ## Funciones 
 
-DISPLAY
+- DISPLAY
 LED_A, LED_B, LED_C, LED_D, LED_E, LED_F, LED_F son #define que utilizamos para agregar los pines del display.
 
-BOTONES
+- BOTONES
 BOTON_SUBIR, BOTON_BAJAR, BOTON_PAUSAR son #define que utilizamos para agregar los pines de los botones.
 
-LEDS
+- LEDS
 LED_ROJO, LED_VERDE son #define que utilizamos para agregar los pines de los leds. 
 
-ESTADOS
+- ESTADOS
 DETENIDO, SUBIENDO, BAJANDO son #define que utilizamos para establecer los estados del sistema. 
 
-VARIABLES GLOBALES
+- VARIABLES GLOBALES
 int piso_actual; -> variable que guarda el piso actual en el que se encuentra el montacarga
 int lectura_subir; -> variable que lee el botón subir
 int lectura_bajar; -> variable que lee el botón bajar
@@ -146,10 +146,12 @@ void Demora(void){
 
 
 - Esta función apaga el led verde y prende el led rojo.
+~~~ C 
 void PrenderLuzVerde(){
        digitalWrite(LED_VERDE, HIGH);
        digitalWrite(LED_ROJO, LOW);
 }
+~~~
 
 
 - Esta función prende el led verde y apaga el led rojo.
@@ -185,7 +187,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, LOW); 
 	    break;
     case 2:
- 	    digitalWrite(LED_A, HIGH);      
+ 	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, HIGH); 
         digitalWrite(LED_C, LOW);
         digitalWrite(LED_D, HIGH);
@@ -194,7 +196,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, HIGH); 
         break;
 	case 3: 
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, HIGH); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, HIGH);
@@ -212,7 +214,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, HIGH); 
         break;
     case 5:
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, LOW); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, HIGH);
@@ -221,7 +223,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, HIGH); 
 	  break;
 	case 6:
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, LOW); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, HIGH);
@@ -230,7 +232,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, HIGH); 
      	break;
 	case 7:
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, HIGH); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, LOW);
@@ -239,7 +241,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, LOW); 
 	  break;
 	case 8:
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, HIGH); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, HIGH);
@@ -248,7 +250,7 @@ void MostrarNumeroPorDisplay(int piso){
         digitalWrite(LED_G, HIGH); 
         break;
     case 9:
-	    digitalWrite(LED_A, HIGH);      
+	digitalWrite(LED_A, HIGH);      
         digitalWrite(LED_B, HIGH); 
         digitalWrite(LED_C, HIGH);
         digitalWrite(LED_D, LOW);
