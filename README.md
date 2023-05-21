@@ -13,11 +13,11 @@ segmentos.
 
 
 ## Lista de Componentes
-![Tinkercad](Img/Lista de ComponentesMontacarga.png)
+![Tinkercad](./Img/Lista de Componentes Montacarga.png)
 
 
 ## Diagrama Esquemático del Circuito
-![Tinkercad](Img/Diagrama Esquemático Montacarga.png)
+![Tinkercad](./Img/Diagrama Esquemático Montacarga.png)
 
 
 ## Funciones 
