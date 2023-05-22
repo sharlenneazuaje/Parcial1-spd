@@ -55,6 +55,10 @@ void IncrementarPiso();
 void DecrementarPiso();
 void Demora();
 
+void MoverServo90();
+void MoverServo180();
+void EvaluarDiaNocheInclinacion();
+
 
 void setup(){
   Serial.begin(9600);
@@ -79,7 +83,6 @@ void setup(){
   pinMode(LED_AZUL, OUTPUT);
   
   
-  
   piso_actual = 0;
   estadoMontacargas=DETENIDO;
   Serial.println("Usted se encuentra en piso: ");  
@@ -89,6 +92,8 @@ void setup(){
   
   myservo1.attach(SERVO1, 500, 2500);
   //myservo1.write(0);
+  
+  pinMode(SINCLINACION, INPUT);
  
 }
 
@@ -99,18 +104,9 @@ void loop(){
   if(estadoMontacargas == DETENIDO){ 
         PrenderLuzRoja();
     
-        myservo1.write(90);
+        MoverServo90();
     
-        valorSensorLuz = analogRead(SLUZAMBIENTAL);
-     
-        if(valorSensorLuz > 20)
-        {
-          digitalWrite(LED_AZUL, HIGH);
-        }
-        else
-        {
-          digitalWrite(LED_AZUL, LOW);
-        }
+        EvaluarDiaNocheInclinacion();
     
         lectura_bajar=digitalRead(BOTON_BAJAR);
         lectura_subir=digitalRead(BOTON_SUBIR);
@@ -134,17 +130,9 @@ void loop(){
   else{ //Está subiendo o bajando
     PrenderLuzVerde();
     
-    myservo1.write(180);
+    MoverServo180();
     
-    valorSensorLuz = analogRead(SLUZAMBIENTAL);
-    if(valorSensorLuz > 20)
-    {
-      digitalWrite(LED_AZUL, HIGH);
-    }
-    else
-    {
-      digitalWrite(LED_AZUL, LOW);
-    }
+    EvaluarDiaNocheInclinacion();
     
     if(estadoMontacargas == SUBIENDO){
             if(piso_actual < 9){
@@ -190,6 +178,42 @@ void loop(){
 
 
 //DESARROLLO
+
+/*
+Esta función mueve el servo a 90 grados
+*/
+void MoverServo90()
+{
+  myservo1.write(90);
+}
+
+/*
+Esta función mueve el servo a 180 grados
+*/
+void MoverServo180()
+{
+  myservo1.write(180);
+}
+
+/*
+Esta función evalúa si es de día o de noche y prende el led azul
+en caso de ser de noche
+*/
+void EvaluarDiaNocheInclinacion()
+{
+  valorSensorLuz = analogRead(SLUZAMBIENTAL);
+  valorInclinacion = analogRead(SINCLINACION);
+  Serial.println(valorInclinacion);
+    if(valorSensorLuz > 20 && valorInclinacion == 1023)
+    {
+      digitalWrite(LED_AZUL, HIGH);
+    }
+    else
+    {
+      digitalWrite(LED_AZUL, LOW);
+    }
+  
+}
 
 /*
 Esta función incrementa en 1 a la variable global piso_actual
