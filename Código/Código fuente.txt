@@ -16,10 +16,21 @@
 
 #define LED_ROJO 9
 #define LED_VERDE 8
+#define LED_AZUL 7
 
 #define DETENIDO 0
 #define SUBIENDO 1
 #define BAJANDO 2
+
+
+#include <Servo.h>
+Servo myservo1;
+#define SERVO1 6
+
+
+#define SLUZAMBIENTAL A2 
+
+#define SINCLINACION A1
 
 //Variables gloables
 int piso_actual;
@@ -28,6 +39,8 @@ int lectura_bajar;
 int lectura_pausar;
 int habilitacion;
 int estadoMontacargas;
+int valorSensorLuz;
+int valorInclinacion;
 
 
 //Si la variable vale 0 -> sistema pausado
@@ -63,6 +76,7 @@ void setup(){
   
   pinMode(LED_ROJO, OUTPUT);
   pinMode(LED_VERDE, OUTPUT);
+  pinMode(LED_AZUL, OUTPUT);
   
   
   
@@ -70,16 +84,34 @@ void setup(){
   estadoMontacargas=DETENIDO;
   Serial.println("Usted se encuentra en piso: ");  
   Serial.println(piso_actual);
+  Serial.println("Servo en 90");
   
+  
+  myservo1.attach(SERVO1, 500, 2500);
+  //myservo1.write(0);
  
 }
 
 void loop(){ 
-
+  
   MostrarNumeroPorDisplay(piso_actual);
   
   if(estadoMontacargas == DETENIDO){ 
         PrenderLuzRoja();
+    
+        myservo1.write(90);
+    
+        valorSensorLuz = analogRead(SLUZAMBIENTAL);
+     
+        if(valorSensorLuz > 20)
+        {
+          digitalWrite(LED_AZUL, HIGH);
+        }
+        else
+        {
+          digitalWrite(LED_AZUL, LOW);
+        }
+    
         lectura_bajar=digitalRead(BOTON_BAJAR);
         lectura_subir=digitalRead(BOTON_SUBIR);
         
@@ -102,6 +134,18 @@ void loop(){
   else{ //Está subiendo o bajando
     PrenderLuzVerde();
     
+    myservo1.write(180);
+    
+    valorSensorLuz = analogRead(SLUZAMBIENTAL);
+    if(valorSensorLuz > 20)
+    {
+      digitalWrite(LED_AZUL, HIGH);
+    }
+    else
+    {
+      digitalWrite(LED_AZUL, LOW);
+    }
+    
     if(estadoMontacargas == SUBIENDO){
             if(piso_actual < 9){
               	Demora();
@@ -109,10 +153,12 @@ void loop(){
                  	IncrementarPiso();
                   	Serial.println("Usted se encuentra en piso: ");  
   					Serial.println(piso_actual);
+                    Serial.println("Servo en 180");
               	}
               	else{
                 	estadoMontacargas=DETENIDO;
                   	Serial.println("SISTEMA PAUSADO");
+                    Serial.println("Servo en 90");
               	}
             }
             else{
@@ -126,10 +172,12 @@ void loop(){
                  	DecrementarPiso();
                   	Serial.println("Usted se encuentra en piso: ");  
   					Serial.println(piso_actual);
+                    Serial.println("Servo en 180");
               	}
               	else{
                 	estadoMontacargas=DETENIDO;
                   	Serial.println("SISTEMA PAUSADO");
+                    Serial.println("Servo en 90");
               	}
             }
             else{
@@ -292,3 +340,4 @@ void PrenderLuzRoja(){
        digitalWrite(LED_VERDE, LOW);
        digitalWrite(LED_ROJO, HIGH);
 }
+
