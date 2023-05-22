@@ -164,7 +164,7 @@ void MoverServo180()
 }
 ~~~
 
-- Esta función evalúa si es de día o de noche y prende el led azul en caso de ser de noche.
+- Esta función evalúa si es de día o de noche y la inclinación del sensor, en caso de ser de noche y estar inclinado, el led azul se encenderá, caso contrario no lo hará
 ~~~ C 
 void EvaluarDiaNocheInclinacion()
 {
