@@ -18,6 +18,12 @@ segmentos.
 ## Diagrama Esquemático del Circuito
 ![Tinkercad](./Img/DiagramaEsquemáticoMontacarga.png)
 
+- Arduino Uno: nos permite interactuar con el display, los leds y los botones. El Arduino lee el estado de los botones y envía las señales adecuadas a los leds y el display. 
+- Botones Pull-Down: tenemos tres botones, uno destinado a subir, otro a bajar y otro a pausar. Al apretar el botón subir, el led verde se enciende y en el display se muestra el número del piso actual. Al apretar el botón pausar, el led verde se apaga, el led rojo se enciende y el display muestra el número del piso actual en el que se ha pausado el montacarga. Al apretar el botón bajar, el led verde se enciende y el led rojo se apaga, y en el display se va mostrando el número del piso actual.
+- Leds: emiten una luz cuando se aplica corriente eléctrica a través de ellos. En este caso, se encienden o se apagan cuando se pulsan determinados botones. El led verde se enciende cuando el sistema está en movimiento y el led rojo se enciende cuando el sistema está pausado.
+- Display 7 segmentos: proporciona una salida visual de información, en este caso mostrando los números desde el 0 (piso más bajo) al 9 (piso más alto).
+- Resistencias: nos ayudan a controlar la cantidad de corriente que pasa por los componentes evitando así daños debido a corrientes excesivas. 
+
 
 ## Funciones 
 
