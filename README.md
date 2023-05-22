@@ -49,12 +49,28 @@ int estadoMontacargas; -> variable que guarda el estado del montacarga dependien
 
 - Esta función corresponde al loop en donde se llaman a las demás funciones que se desarrollan. 
 ~~~ C 
-void loop(){ 
+}
 
+void loop(){ 
+  
   MostrarNumeroPorDisplay(piso_actual);
   
   if(estadoMontacargas == DETENIDO){ 
         PrenderLuzRoja();
+    
+        myservo1.write(90);
+    
+        valorSensorLuz = analogRead(SLUZAMBIENTAL);
+     
+        if(valorSensorLuz > 20)
+        {
+          digitalWrite(LED_AZUL, HIGH);
+        }
+        else
+        {
+          digitalWrite(LED_AZUL, LOW);
+        }
+    
         lectura_bajar=digitalRead(BOTON_BAJAR);
         lectura_subir=digitalRead(BOTON_SUBIR);
         
@@ -77,6 +93,18 @@ void loop(){
   else{ //Está subiendo o bajando
     PrenderLuzVerde();
     
+    myservo1.write(180);
+    
+    valorSensorLuz = analogRead(SLUZAMBIENTAL);
+    if(valorSensorLuz > 20)
+    {
+      digitalWrite(LED_AZUL, HIGH);
+    }
+    else
+    {
+      digitalWrite(LED_AZUL, LOW);
+    }
+    
     if(estadoMontacargas == SUBIENDO){
             if(piso_actual < 9){
               	Demora();
@@ -84,10 +112,12 @@ void loop(){
                  	IncrementarPiso();
                   	Serial.println("Usted se encuentra en piso: ");  
   					Serial.println(piso_actual);
+                    Serial.println("Servo en 180");
               	}
               	else{
                 	estadoMontacargas=DETENIDO;
                   	Serial.println("SISTEMA PAUSADO");
+                    Serial.println("Servo en 90");
               	}
             }
             else{
@@ -101,10 +131,12 @@ void loop(){
                  	DecrementarPiso();
                   	Serial.println("Usted se encuentra en piso: ");  
   					Serial.println(piso_actual);
+                    Serial.println("Servo en 180");
               	}
               	else{
                 	estadoMontacargas=DETENIDO;
                   	Serial.println("SISTEMA PAUSADO");
+                    Serial.println("Servo en 90");
               	}
             }
             else{
