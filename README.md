@@ -26,7 +26,7 @@ segmentos.
 - Resistencias: nos ayudan a controlar la cantidad de corriente que pasa por los componentes evitando así daños debido a corrientes excesivas. 
 - Servo: tenemos un servo que según el estado del sistema, se moverá a una determinada posición. Sistema pausado, 90 grados; sistema en movimiento, 180 grados. 
 - Sensor de luz ambiental: miden la intensidad de la luz presente en el entorno. En este caso si es de noche, el led azul se encenderá para indicarlo, caso contrario, no se encenderá.
-- Sensor de inclinación: detecta y mide el ángulo de inclinación de un objeto o superficie. En este caso, si el sensor está inclinado, la luz indicativa de la noche se encenderá, caso contrario, no lo hará.
+- Sensor de inclinación: detecta y mide el ángulo de inclinación de un objeto o superficie. En este caso, si el sensor no está inclinado, la luz indicativa de la noche se encenderá, caso contrario, no lo hará.
 
 
 ## Funciones 
@@ -164,7 +164,7 @@ void MoverServo180()
 }
 ~~~
 
-- Esta función evalúa si es de día o de noche y la inclinación del sensor, en caso de ser de noche y estar inclinado, el led azul se encenderá, caso contrario no lo hará
+- Esta función evalúa si es de día o de noche y la inclinación del sensor, en caso de ser de noche y no estar inclinado, el led azul se encenderá, caso contrario no lo hará
 ~~~ C 
 void EvaluarDiaNocheInclinacion()
 {
