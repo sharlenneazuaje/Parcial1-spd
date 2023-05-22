@@ -2,7 +2,7 @@
 
 
 ## Proyecto: Montacarga Funcional.
-![Tinkercad](./Img/Montacarga.png)
+![Tinkercad](./Img/Montacarga2.png)
 
 
 ## Descripción
